@@ -7,11 +7,11 @@ docker pull odellus052/pieces-demo:v0.0.5
 docker run -v $(pwd)/out:/app/out odellus052/pieces-demo:v0.0.5 python sql_agent.py
 ```
 Answers appear in `out/answers.jsonl` and look like this
-```json
-{"patient_id": "p1", "question": "Did patient p1 have Hypertension/Hypotension given blood-pressure records from vitals?", "answer": "Yes, patient p1 had Hypertension given the blood pressure record of 186/82 mmHg from the vitals."}
-{"patient_id": "p1", "question": "Did patient p1 get the medication order to treat hypertension/hypotension if any?", "answer": "Yes, patient p1 received a medication order for LABETALOL, which is used to treat hypertension, with the instruction to administer if Systolic BP is greater than 160 mmHg."}
-{"patient_id": "p2", "question": "Did patient p2 have Hypertension/Hypotension given blood-pressure records from vitals?", "answer": "Yes, patient p2 had Hypotension given the blood pressure record of 68/41 mmHg."}
-{"patient_id": "p2", "question": "Did patient p2 get the medication order to treat hypertension/hypotension if any?", "answer": "No, patient p2 did not get the medication order to treat hypertension/hypotension if any."}
+````python
+{'patient_id': 'p1', 'question': 'Did patient p1 have Hypertension/Hypotension given blood-pressure records from vitals?', 'answer': 'Yes, patient p1 had Hypertension.', 'sql_query': "SELECT observationresult FROM vitals WHERE patientid = 'p1' AND componentid = 'BloodPressure' LIMIT 5", 'sql_result': "[('186/82',)]", 'timestamp': '2023-12-14 20:52:14'}
+{'patient_id': 'p1', 'question': 'Did patient p1 get the medication order to treat hypertension/hypotension if any?', 'answer': 'No', 'sql_query': "SELECT description, providerinstructions FROM medication WHERE patientid = 'p1' AND (providerinstructions LIKE '%hypertension%' OR providerinstructions LIKE '%hypotension%' OR description LIKE '%hypertension%' OR description LIKE '%hypotension%') LIMIT 5;", 'sql_result': '', 'timestamp': '2023-12-14 20:52:43'}
+{'patient_id': 'p2', 'question': 'Did patient p2 have Hypertension/Hypotension given blood-pressure records from vitals?', 'answer': "Yes, patient p2 had hypotension on '2023-11-29 12:52:00'.", 'sql_query': "SELECT observationdate, observationresult FROM vitals WHERE patientid = 'p2' AND componentid = 'BloodPressure' ORDER BY observationdate DESC LIMIT 5;", 'sql_result': "[('2023-11-29 12:52:00', '68/41'), ('2023-11-29 12:32:00', '108/63')]", 'timestamp': '2023-12-14 20:53:28'}
+{'patient_id': 'p2', 'question': 'Did patient p2 get the medication order to treat hypertension/hypotension if any?', 'answer': 'No', 'sql_query': "SELECT description FROM medication WHERE patientid = 'p2' AND (description LIKE '%hypertension%' OR description LIKE '%hypotension%') LIMIT 5;", 'sql_result': '', 'timestamp': '2023-12-14 20:53:58'}
 ```
 ## Install
 ### Local
