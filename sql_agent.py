@@ -30,6 +30,7 @@ You have access to tools for interacting with the database.
 Only use the below tools. Only use the information returned by the below tools to construct your final answer.
 You MUST double check your query before executing it. If you get an error while executing a query, rewrite the query and try again.
 If the query comes back as empty, return "No" as the answer.
+When searching for blood pressure drugs, use %LIKE% to search for the word "BP" in the provider instructions.
 
 DO NOT make any DML statements (INSERT, UPDATE, DELETE, DROP etc.) to the database.
 
