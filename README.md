@@ -13,6 +13,7 @@ Answers appear in `out/answers.jsonl` and look like this
 {'patient_id': 'p2', 'question': 'Did patient p2 have Hypertension/Hypotension given blood-pressure records from vitals?', 'answer': "Yes, patient p2 had hypotension on '2023-11-29 12:52:00'.", 'sql_query': "SELECT observationdate, observationresult FROM vitals WHERE patientid = 'p2' AND componentid = 'BloodPressure' ORDER BY observationdate DESC LIMIT 5;", 'sql_result': "[('2023-11-29 12:52:00', '68/41'), ('2023-11-29 12:32:00', '108/63')]", 'timestamp': '2023-12-14 20:53:28'}
 {'patient_id': 'p2', 'question': 'Did patient p2 get the medication order to treat hypertension/hypotension if any?', 'answer': 'No', 'sql_query': "SELECT description FROM medication WHERE patientid = 'p2' AND (description LIKE '%hypertension%' OR description LIKE '%hypotension%') LIMIT 5;", 'sql_result': '', 'timestamp': '2023-12-14 20:53:58'}
 ```
+
 ## Install
 ### Local
 To run the script outside of a docker container execute the following steps:
