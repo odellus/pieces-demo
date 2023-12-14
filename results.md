@@ -12,10 +12,10 @@ The medication table encompassed patient ID, medication interval, start date of 
 
 # Development Tools and Resources
 
-- Langchain SQL Agent: Initially employed for its efficacy and ease of integration.
+- [Langchain SQL Agent](https://python.langchain.com/docs/integrations/toolkits/sql_database): Initially employed for its efficacy and ease of integration.
 - Development Environment: Visual Studio Code.
 - Assistance Tools: Utilized ChatGPT for specific Docker-related queries and GitHub Copilot for generating function docstrings.
-- Database Hosting: Employed a free tier PostgreSQL database from ElephantSQL.
+- Database Hosting: Employed a free tier PostgreSQL database from [ElephantSQL](https://elephantsql.com/).
 
 # Approach
 ### Initial Steps
