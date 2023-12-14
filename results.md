@@ -50,12 +50,12 @@ p1      Once 1745       2023-12-04 23:45:00     POTASSIUM CHLORIDE ER 20 MEQ TAB
 
 I decide to start with the default [langchain sql agent](https://python.langchain.com/docs/integrations/toolkits/sql_database) as it usually gives good results and is fast to implement as a first try.
 
-I used VS Code for the coding. I asked chatgpt one question about how to pass in the volume to docker run because I couldn't remember whether it's `-v host:container` or `-v container:host` (it's the former) and Github Copilot to write the function docstrings inside [sql_agent.py](./sql_agent.py). I'm pretty sure I tabbed through to autocomplete some of the code as well. Especially the final part. Once you get all of your functions defined it's pretty obvious how you want to use them most of the time.
+I used VS Code for the coding. I asked chatgpt one question about how to pass in the volume to docker run because I couldn't remember whether it's `-v host:container` or `-v container:host` (it's the former). I used Github Copilot to write the function docstrings inside [sql_agent.py](./sql_agent.py). I'm pretty sure I tabbed through to autocomplete some of the code as well. Especially the final part. Once you get all of your functions defined it's pretty obvious how you want to use them most of the time.
 
 
 I used a free tier postgresql database from [ElephantSQL](https://elephantsql.com) to store our medication and vitals tables.
 
-The minor modifications I made to the default langchain sql agent were mosting in the fuction `get_prefix` and are noted above under [Approach](#approach).
+The minor modifications I made to the default langchain sql agent were mosting in the fuction `get_prefix` and are noted under [Approach](#approach).
 
 # Approach
 Initially the results were good for the first question for both patients, but it failed on the second question and struggled with getting the right syntax for postgresql. So in the loading step I lowercased all of the columns names for postgres, simplifying our task for our agent.
