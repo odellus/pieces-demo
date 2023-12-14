@@ -68,12 +68,13 @@ The last piece of the puzzle was including into the prefix the line:
 ```
 If the query comes back as empty, return "No" as the answer.
 ```
-This allowed our agent to conclude that null results from running its query were not actually an error in query construction, but a possible result to which we must answer the question of whether a drug was administered as "No."
+This allowed our agent to conclude that null results from running its query were not actually an error in query construction, but a negative result. In this case we must answer the question of whether a drug was administered as "No."
 
 
 
 
 # Results
+The results of asking the questions
 ```json
 {"patient_id": "p1", "question": "Did patient p1 have Hypertension/Hypotension given blood-pressure records from vitals?", "answer": "Yes, patient p1 had Hypertension given the blood pressure record of 186/82 mmHg."}
 {"patient_id": "p1", "question": "Did patient p1 get the medication order to treat hypertension/hypotension if any?", "answer": "Yes, patient p1 did receive a medication order for treating hypertension. The medication prescribed was LABETALOL, with instructions to administer if the systolic blood pressure is greater than 160 mmHg."}
