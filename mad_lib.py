@@ -11,9 +11,14 @@ def get_vitals_qry(patient_id, limit = 5):
     return text(qry)
 
 def check_patient_vitals(patient_id, engine):
-    '''Check if a patient has any vitals'''
+    '''Check if a patient has blood pressure vitals'''
     qry = get_vitals_qry(patient_id)
     df = pd.read_sql(qry, engine)
+    if len(df) == 0:
+        return {
+            'hypertension': False,
+            'hypotension': False,
+        }
     dfout = df.observationresult.str.split('/', expand=True)
     dfout.columns = ['systolic', 'diastolic']
     dfout = dfout.astype(float)
@@ -31,6 +36,7 @@ def check_patient_drugs(patient_id, engine):
     return df.shape[0] > 0
 
 def no_ml():
+    '''Run the agent without ANY machine learning'''
     patient_ids = ['p1', 'p2']
     cfg = get_cfg()
     engine = create_engine(cfg['POSTGRES_URI'])
