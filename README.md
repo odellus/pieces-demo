@@ -1,8 +1,12 @@
 # Pieces Demo
 
+## Problem
+
+
 ## Usage
 If you want to save time please do not worry about installing and just run:
 ```bash
+mkdir out
 docker pull odellus052/pieces-demo:v0.0.7
 docker run -v $(pwd)/out:/app/out odellus052/pieces-demo:v0.0.7 python sql_agent.py
 ```
