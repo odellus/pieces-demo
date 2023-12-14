@@ -13,4 +13,4 @@ RUN apt-get update && \
 
 RUN mkdir out
 
-COPY . /app
+COPY ./config.yaml ./sql_agent.py ./interview_dataset-medication.csv ./interview_dataset-vital.csv /app
