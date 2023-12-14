@@ -3,6 +3,7 @@
 ## Usage
 If you want to save time please do not worry about installing and just run:
 ```bash
+docker pull odellus052/pieces-demo:v0.0.3
 docker run -v $(pwd)/out:/app/out odellus052/pieces-demo:v0.0.3 python sql_agent.py
 ```
 Answers appear in `out/answers.jsonl` and look like this
