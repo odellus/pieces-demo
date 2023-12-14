@@ -84,7 +84,7 @@ which show that the agent is getting the answer wrong.
 I added 
 > When searching for blood pressure drugs, use %LIKE% to search for the word "BP" in the provider instructions.
 
-because of this consisten possiblity of error now that we told our agent to consider empty search results to mean that we are not giving our patient any medication.
+because of this consistent possiblity of error now that we told our agent to consider empty search results to mean that we are not giving our patient any medication.
 
 
 # Results
