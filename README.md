@@ -6,51 +6,7 @@ If you want to save time please do not worry about installing and just run:
 docker pull odellus052/pieces-demo:v0.0.7
 docker run -v $(pwd)/out:/app/out odellus052/pieces-demo:v0.0.7 python sql_agent.py
 ```
-Answers appear in `out/answers.jsonl` and look like this without the extra newlines for easier reading
-```python
-{'answer': 'Yes, patient p1 had Hypertension.',
- 'patient_id': 'p1',
- 'question': 'Did patient p1 have Hypertension/Hypotension given '
-             'blood-pressure records from vitals?',
- 'sql_query': "SELECT observationresult FROM vitals WHERE patientid = 'p1' AND "
-              "componentid = 'BloodPressure' ORDER BY observationdate DESC "
-              'LIMIT 5',
- 'sql_result': "[('186/82',)]",
- 'timestamp': '2023-12-14 16:37:26'}
 
-{'answer': "Yes, patient p1 has been given the medication 'LABETALOL 20 MG/4 "
-           "ML (5 MG/ML) INTRAVENOUS SYRINGE' to treat hypertension.",
- 'patient_id': 'p1',
- 'question': 'Did patient p1 get the medication order to treat '
-             'hypertension/hypotension if any?',
- 'sql_query': 'SELECT description, providerinstructions FROM medication WHERE '
-              "patientid = 'p1' AND (providerinstructions LIKE '%BP GREATER%' "
-              "OR providerinstructions LIKE '%BP LESS%') LIMIT 5;",
- 'sql_result': "[('LABETALOL 20 MG/4 ML (5 MG/ML) INTRAVENOUS SYRINGE', "
-               "'Administer if Systolic BP GREATER than 160')]",
- 'timestamp': '2023-12-14 16:38:07'}
-
-'answer': 'Yes, patient p2 had Hypotension.',
- 'patient_id': 'p2',
- 'question': 'Did patient p2 have Hypertension/Hypotension given '
-             'blood-pressure records from vitals?',
- 'sql_query': "SELECT observationresult FROM vitals WHERE patientid = 'p2' AND "
-              "componentid = 'BloodPressure' ORDER BY observationdate DESC "
-              'LIMIT 5',
- 'sql_result': "[('68/41',), ('108/63',)]",
- 'timestamp': '2023-12-14 16:38:42'}
-
-{'answer': 'No',
- 'patient_id': 'p2',
- 'question': 'Did patient p2 get the medication order to treat '
-             'hypertension/hypotension if any?',
- 'sql_query': 'SELECT patientid, orderstartdate, description, '
-              "providerinstructions FROM medication WHERE patientid = 'p2' AND "
-              "providerinstructions LIKE '%BP%' ORDER BY orderstartdate DESC "
-              'LIMIT 5',
- 'sql_result': '',
- 'timestamp': '2023-12-14 16:39:13'}
-```
 
 ## Install
 ### Local
