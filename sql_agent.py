@@ -1,3 +1,4 @@
+import os
 import json
 import yaml
 import pandas as pd
@@ -38,6 +39,9 @@ If the question does not seem related to the database, just return "I don\'t kno
 
 def load_data(cfg):
     '''Load the data from CSV files into the database'''
+    # Make an our directory already if doesn't exist
+    if not os.path.exists('out'):
+        os.makedirs('out')
     engine = create_engine(cfg['POSTGRES_URI'])
     df = pd.read_csv('./interview_dataset-medication.csv')
     df.columns = [c.lower() for c in df.columns]
