@@ -1,0 +1,4 @@
+{"patient_id": "p1", "question": "Did patient p1 have Hypertension/Hypotension given blood-pressure records from vitals?", "answer": "Yes, patient p1 had Hypertension given the blood-pressure records from vitals."}
+{"patient_id": "p1", "question": "Did patient p1 get the medication order to treat hypertension/hypotension if any?", "answer": "Yes, patient p1 received a medication order for Labetalol, which is used to treat hypertension, with the instruction to administer if the systolic blood pressure is greater than 160 mmHg."}
+{"patient_id": "p2", "question": "Did patient p2 have Hypertension/Hypotension given blood-pressure records from vitals?", "answer": "Yes, patient p2 had Hypotension given the blood pressure record of 68/41 mmHg from the vitals."}
+{"patient_id": "p2", "question": "Did patient p2 get the medication order to treat hypertension/hypotension if any?", "answer": "No, patient p2 did not get a medication order to treat hypertension/hypotension."}
